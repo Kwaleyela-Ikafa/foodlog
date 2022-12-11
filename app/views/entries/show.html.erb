@@ -1,10 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<div class="columns mt-6 is-centered">
+  <div class="column is-one-quarter">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title"><%= @entry.meal_type %></p>
+      </header>
+      <div class="card-content">
 
-<%= render @entry %>
+        <div class="content">
+          <p><span class="has-text-weight-bold"><%= render @entry %></span></p>
+          <p class="italic">Logged: <%= time_ago_in_words(@entry.created_at) %> ago</p>
+        </div>
 
-<div>
-  <%= link_to "Edit this entry", edit_entry_path(@entry) %> |
-  <%= link_to "Back to entries", entries_path %>
-
-  <%= button_to "Destroy this entry", @entry, method: :delete %>
+      </div>
+      <div class="card-footer">
+          <%= link_to "Edit", edit_entry_path(@entry), class: "card-footer-item"  %>
+          <%= link_to "Back", entries_path, class: "card-footer-item" %>
+        
+          <%= button_to "Destroy", @entry, method: :delete, class: "button card-footer-item is-danger is-light is-medium is-responsive" %>
+          <%# data: { confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  </div>
 </div>
